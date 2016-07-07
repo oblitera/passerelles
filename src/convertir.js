@@ -4,7 +4,7 @@
 var fs = require("fs");
 var cliargs = require('cliargs');
 var options = require('./options.json');
-var m_annonce = require(options.path_metiers+'/annonce');
+var m_annonce = require('./metiers/annonce');
 
 //-----------------------------
 // Define

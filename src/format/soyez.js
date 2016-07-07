@@ -3,9 +3,9 @@
 //-----------------------------
 var fs = require("fs");
 var options = require('../options.json');
-var m_annonce = require(options.path_metiers+'/annonce');
-var m_image = require(options.path_metiers+'/image');
-var m_files = require(options.path_metiers+'/file');
+var m_annonce = require('../metiers/annonce');
+var m_image = require('../metiers/image');
+var m_files = require('../metiers/file');
 
 //-----------------------------
 // Cible

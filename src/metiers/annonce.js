@@ -3,8 +3,8 @@
 //-----------------------------
 var fs = require('fs');
 var Validator = require('validatorjs');
-var m_ville = require('./ville');
-var m_agence = require('./agence');
+var m_ville = require('../metiers/ville');
+var m_agence = require('../metiers/agence');
 
 //-----------------------------
 // Define
