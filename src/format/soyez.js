@@ -2,8 +2,10 @@
 // Require
 //-----------------------------
 var fs = require("fs");
-var tools = require('../tools');
 var options = require('../options.json');
+var m_annonce = require(options.path_metiers+'/annonce');
+var m_image = require(options.path_metiers+'/image');
+var m_files = require(options.path_metiers+'/file');
 
 //-----------------------------
 // Cible
@@ -20,13 +22,13 @@ var convertir = function (path_passerelle)
 	for(var i in liste_file)
 	{
 		var path_file = path_passerelle+liste_file[i].fichier;
-		var data = tools.open_and_parse_xml(path_file);
+		var data = m_files.open_and_parse_xml(path_file);
 
 		if(data !== false)
 		{
 			for(var j in data.annonce)
 			{
-				var annonce = tools.default_annonce();
+				var annonce = m_annonce.default_annonce();
 				annonce.reference = data.annonce[j].reference;
 				annonce.description = data.annonce[j].description;
 				annonce.commercial = "vente";
@@ -36,9 +38,7 @@ var convertir = function (path_passerelle)
 				annonce.images = recherche_img(data.annonce[j]);
 				annonce.agence = liste_file[i].agence;
 				annonce.origine = data.annonce[j];
-				annonce.ville = tools.recherche_id_ville(false,data.annonce[j].ville);
 				annonces.push(annonce);
-				console.log(annonce.ville);
 			}	
 			console.log("Le fichier "+liste_file[i].fichier+" a été traité");		
 		}
@@ -76,7 +76,7 @@ var valide_img = function (candidat, tab)
 {
 	if(candidat != undefined)
 	{
-		var image = tools.default_img();
+		var image = m_image.default_img();
 		image.src = candidat;
 		tab.push(image);
 	}

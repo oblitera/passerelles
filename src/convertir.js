@@ -3,8 +3,8 @@
 //-----------------------------
 var fs = require("fs");
 var cliargs = require('cliargs');
-var tools = require('./tools');
 var options = require('./options.json');
+var m_annonce = require(options.path_metiers+'/annonce');
 
 //-----------------------------
 // Define
@@ -47,9 +47,9 @@ function convertir_une_passerelles(cible)
 		var passerelle = require('./format/'+cible+'.js');
 		var path_passerelle = options.path_input+cible+"/";
 		var path_passerelle_json = options.path_output+"/"+cible+".json";
-		var annonces = tools.validations(passerelle.convertir(path_passerelle));
+		var annonces = m_annonce.validations(passerelle.convertir(path_passerelle));
 		fs.writeFileSync(path_passerelle_json, JSON.stringify(annonces), "UTF-8");
-		console.log(tools.bilan(annonces));		
+		console.log(m_annonce.bilan(annonces));		
 	}
 	else
 	{
