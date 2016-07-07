@@ -9,6 +9,14 @@ var passerelles = [
 ];
 
 //-----------------------------
+// Define
+//-----------------------------
+var path_assets = "C:/tools/visiteimmo/passerelles/assets/";
+var path_tempo = path_assets + "tempo/";
+var path_input = path_assets + "input/";
+var path_output = path_assets + "output/";
+
+//-----------------------------
 // Console
 //-----------------------------
 if(argsObj.a)
@@ -34,9 +42,11 @@ if(argsObj.p)
 
 function traitement_passerelle(cible)
 {
-	var passerelle = require('./'+cible+'.js');
-	var annonces = tools.validations(passerelle.convertir());
-	console.log(tools.bilan(annonces));	
+	var passerelle = require('./format/'+cible+'.js');
+	var path_passerelle = path_input+cible+"/";
+	var annonces = tools.validations(passerelle.convertir(path_passerelle));
+	console.log(tools.bilan(annonces));
+	//fs.writeFileSync(path_assets+"cible.sql", all_sql, "UTF-8");	
 }
 
 //-----------------------------

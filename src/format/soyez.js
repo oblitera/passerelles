@@ -2,17 +2,8 @@
 // Require
 //-----------------------------
 var fs = require("fs");
-var tools = require('./tools');
+var tools = require('../tools');
 
-
-//-----------------------------
-// Define
-//-----------------------------
-var path_assets = "C:/tools/visiteimmo/passerelles/assets/";
-var path_tempo = path_assets + "tempo/";
-var path_input = path_assets + "input/";
-var path_output = path_assets + "output/";
-var path_passerelle = path_input+"soyez/";
 
 //-----------------------------
 // Cible
@@ -25,7 +16,7 @@ var liste_file = [
 //-----------------------------
 // Main
 //-----------------------------
-var convertir = function ()
+var convertir = function (path_passerelle)
 {
 	var annonces = [];
 
@@ -58,7 +49,6 @@ var convertir = function ()
 
 	return annonces;
 }
-
 
 //-----------------------------
 // Recherche Image
