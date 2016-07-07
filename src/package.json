@@ -1,0 +1,17 @@
+{
+  "name": "passerelles",
+  "version": "1.0.0",
+  "description": "Gestionnaire de conversion des fichiers clients vers un format unique",
+  "main": "index.js",
+  "dependencies": {
+    "pixl-xml": "^1.0.7",
+    "cliargs": "^0.1.1",
+    "validatorjs": "^3.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
