@@ -4,8 +4,10 @@
   "description": "Gestionnaire de conversion des fichiers clients vers un format unique",
   "main": "index.js",
   "dependencies": {
-    "pixl-xml": "^1.0.7",
     "cliargs": "^0.1.1",
+    "pixl-xml": "^1.0.7",
+    "slugify": "^0.1.1",
+    "sync-request": "^3.0.1",
     "validatorjs": "^3.1.0"
   },
   "devDependencies": {},

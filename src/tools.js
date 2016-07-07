@@ -4,6 +4,9 @@
 var fs = require('fs');
 var xml = require('pixl-xml');
 var Validator = require('validatorjs');
+var child_process = require('child_process');
+var slugify = require('slugify');
+var request = require('sync-request');
 
 //-----------------------------
 // Define
@@ -57,7 +60,8 @@ var default_img = function() {
 //condition critique
 var rules_critique = {
 	reference:"required|min:3",
-	agence:"required|integer:3",
+	agence:"required|min:3",
+	ville:"required|min:3",
 };
 
 //condition warning
@@ -193,6 +197,43 @@ var open_and_parse_xml = function(path)
 	}
 }
 
+//------------------------
+// Recherche Ville
+//------------------------
+var recherche_id_ville = function(cp, ville)
+{
+	var commande = 'http://villess.dev/villes?f=ini';
+	var buffer = false;
+	var resultat = false;
+
+	if(!cp && !ville)
+	{
+		return false;
+	}
+
+	if(cp)
+	{
+		commande += '&cp='+cp;
+	}
+
+	if(ville)
+	{
+		commande += '&slug='+slugify(ville);
+	}
+
+	try
+	{
+		var res = request('GET', commande);
+		var resultat = res.getBody("UTF-8");
+		return resultat;
+	}
+	catch(e)
+	{
+		return false;
+	}
+
+}
+
 
 exports.default_annonce = default_annonce;
 exports.default_img = default_img;
@@ -201,3 +242,4 @@ exports.open_and_parse_xml = open_and_parse_xml;
 exports.validation = validation;
 exports.validations = validations;
 exports.bilan = bilan;
+exports.recherche_id_ville = recherche_id_ville;

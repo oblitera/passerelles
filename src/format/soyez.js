@@ -5,7 +5,6 @@ var fs = require("fs");
 var tools = require('../tools');
 var options = require('../options.json');
 
-
 //-----------------------------
 // Cible
 //-----------------------------
@@ -36,7 +35,10 @@ var convertir = function (path_passerelle)
 				annonce.dpe = data.annonce[j].dpeenergie;
 				annonce.images = recherche_img(data.annonce[j]);
 				annonce.agence = liste_file[i].agence;
-				annonces.push(annonce);				
+				annonce.origine = data.annonce[j];
+				annonce.ville = tools.recherche_id_ville(false,data.annonce[j].ville);
+				annonces.push(annonce);
+				console.log(annonce.ville);
 			}	
 			console.log("Le fichier "+liste_file[i].fichier+" a été traité");		
 		}
