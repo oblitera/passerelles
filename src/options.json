@@ -1,0 +1,15 @@
+{
+	"passerelles"	:[
+		"soyez"
+	],
+	"correspondance":{
+		"soyez":[
+			{"fichier":"7192.xml", "agence":"47859"},
+			{"7192":"999.xml", "agence":"8562"}
+		]
+	},
+	"path_assets"	:"C:/tools/visiteimmo/passerelles/assets/",
+	"path_tempo"	:"C:/tools/visiteimmo/passerelles/assets/tempo/",
+	"path_input"	:"C:/tools/visiteimmo/passerelles/assets/input/",
+	"path_output"	:"C:/tools/visiteimmo/passerelles/assets/output/"
+}

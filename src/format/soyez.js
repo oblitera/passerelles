@@ -3,15 +3,13 @@
 //-----------------------------
 var fs = require("fs");
 var tools = require('../tools');
+var options = require('../options.json');
 
 
 //-----------------------------
 // Cible
 //-----------------------------
-var liste_file = [
-	"999.xml",
-	"7192.xml"
-];
+var liste_file = options.correspondance.soyez;
 
 //-----------------------------
 // Main
@@ -22,7 +20,7 @@ var convertir = function (path_passerelle)
 
 	for(var i in liste_file)
 	{
-		var path_file = path_passerelle+liste_file[i];
+		var path_file = path_passerelle+liste_file[i].fichier;
 		var data = tools.open_and_parse_xml(path_file);
 
 		if(data !== false)
@@ -37,9 +35,10 @@ var convertir = function (path_passerelle)
 				annonce.prix = data.annonce[j].prix,
 				annonce.dpe = data.annonce[j].dpeenergie;
 				annonce.images = recherche_img(data.annonce[j]);
+				annonce.agence = liste_file[i].agence;
 				annonces.push(annonce);				
 			}	
-			console.log("Le fichier "+liste_file[i]+" a été traité");		
+			console.log("Le fichier "+liste_file[i].fichier+" a été traité");		
 		}
 		else
 		{

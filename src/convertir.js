@@ -4,15 +4,11 @@
 var fs = require("fs");
 var cliargs = require('cliargs');
 var tools = require('./tools');
-var passerelles = require('./liste_passerelles.json');
+var options = require('./options.json');
 
 //-----------------------------
 // Define
 //-----------------------------
-var path_assets = "C:/tools/visiteimmo/passerelles/assets/";
-var path_tempo = path_assets + "tempo/";
-var path_input = path_assets + "input/";
-var path_output = path_assets + "output/";
 var argsObj = cliargs.parse();
 
 //-----------------------------
@@ -38,19 +34,19 @@ if(argsObj.h)
 //-----------------------------
 function convertir_toutes_les_passerelles()
 {
-	for(var i in passerelles)
+	for(var i in options.passerelles)
 	{
-		convertir_une_passerelles(passerelles[i]);			
+		convertir_une_passerelles(options.passerelles[i]);			
 	}	
 }
 
 function convertir_une_passerelles(cible)
 {
-	if(passerelles.indexOf(cible) != -1)
+	if(options.passerelles.indexOf(cible) != -1)
 	{
 		var passerelle = require('./format/'+cible+'.js');
-		var path_passerelle = path_input+cible+"/";
-		var path_passerelle_json = path_output+"/"+cible+".json";
+		var path_passerelle = options.path_input+cible+"/";
+		var path_passerelle_json = options.path_output+"/"+cible+".json";
 		var annonces = tools.validations(passerelle.convertir(path_passerelle));
 		fs.writeFileSync(path_passerelle_json, JSON.stringify(annonces), "UTF-8");
 		console.log(tools.bilan(annonces));		

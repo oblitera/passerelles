@@ -56,7 +56,8 @@ var default_img = function() {
 //-----------------------------
 //condition critique
 var rules_critique = {
-	reference:"required|min:3"
+	reference:"required|min:3",
+	agence:"required|integer:3",
 };
 
 //condition warning
